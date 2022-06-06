@@ -5,6 +5,7 @@ import Book from './Book';
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
+import BookList from './books/BookList';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/getbook" element={<Book />} />
+        <Route exact path="/getbooklist" element={<BookList />} />
       </Routes>
     </div>
   );
