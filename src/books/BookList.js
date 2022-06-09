@@ -42,7 +42,7 @@ function BookList() {
         <div className="BookList-results">
           <ul>
             {bookInfo.map((b) => (
-              <li>
+              <li key={b.id}>
                 {b.title}
                 <Link to={`/getbook/${b.id}`}>View book details</Link>
               </li>

@@ -4,18 +4,14 @@ import Homepage from './Homepage';
 import Book from './books/Book';
 import BookDetail from './books/BookDetail';
 import { Route, Routes } from 'react-router-dom';
+import NavRoutes from './routes-nav/NavRoutes';
 
 import './App.css';
-import BookList from './books/BookList';
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route exact path="/" element={<Homepage />} />
-        <Route exact path="/getbook/:volId" element={<Book />} />
-        <Route exact path="/getbooklist" element={<BookList />} />
-      </Routes>
+      <NavRoutes />
     </div>
   );
 }
