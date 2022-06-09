@@ -37,11 +37,9 @@ class BookAppApi {
 
   static async getBookList(searchTerm) {
     let res = await this.request(`search/q=${searchTerm}`);
+    console.log(res);
     return res;
   }
-  // static async getBookList(searchTerm) {
-  //   let res = await this.request()
-  // }
 
   // static async login(data) {
   //   let res = await this.request(`auth/token`, data, 'post');

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BookAppApi from '../api';
-import Book from '../Book';
+import Book from './Book';
 import SearchForm from '../common/SearchForm';
+import { Link } from 'react-router-dom';
 
 function BookList() {
   const [books, setBooks] = useState(null);
@@ -18,28 +19,38 @@ function BookList() {
     setBooks(books);
   }
 
-  let bookIds = [];
+  let bookInfo = [];
 
   if (books) {
     for (let i = 0; i < books.results.length; i++) {
-      let extBookId = books.results[i].external_book_id;
-      // console.log(books.results[i]);
-      bookIds.push(extBookId);
+      let bookTitle = books.results[i].book_title;
+      let bookId = books.results[i].external_book_id;
+      let bookObj = {
+        title: bookTitle,
+        id: bookId,
+      };
+
+      bookInfo.push(bookObj);
     }
-    console.log(bookIds);
   }
 
   return (
     <div className="BookList">
       <SearchForm searchFor={search} />
-      {bookIds.length ? (
+
+      {books ? (
         <div className="BookList-results">
-          {bookIds.map((b) => (
-            <Book volId={b} />
-          ))}
+          <ul>
+            {bookInfo.map((b) => (
+              <li>
+                {b.title}
+                <Link to={`/getbook/${b.id}`}>View book details</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
-        <p>no results</p>
+        <p>No results</p>
       )}
     </div>
   );
