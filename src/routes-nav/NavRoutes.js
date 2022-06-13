@@ -5,11 +5,15 @@ import BookList from '../books/BookList';
 import Book from '../books/Book';
 import BookDetail from '../books/BookDetail';
 
-function NavRoutes() {
+function NavRoutes({ login, signup }) {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Homepage />} />
+        <Route
+          exact
+          path="/"
+          element={<Homepage login={login} signup={signup} />}
+        />
         <Route exact path="/getbook/:volId" element={<Book />} />
         <Route exact path="/getbooklist" element={<BookList />} />
       </Routes>

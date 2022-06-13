@@ -5,8 +5,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 const DEV_BASE_URL = 'https://capstone2-bookapp-backend.herokuapp.com';
 
 class BookAppApi {
-  static token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMTgxMjMiLCJpYXQiOjE2NTQ0NTgyNjZ9.mP4zmOiNy5KDmCwdFbawaPXhk9xblziqxcm6SQozWio';
+  static token;
 
   static async request(endpoint, data = {}, method = 'get') {
     console.debug('API Call:', endpoint, data, method);
@@ -41,10 +40,21 @@ class BookAppApi {
     return res;
   }
 
-  // static async login(data) {
-  //   let res = await this.request(`auth/token`, data, 'post');
-  //   return res.token;
-  // }
+  //login and signup routes
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+  static async login(data) {
+    let res = await this.request(`auth/token`, data, 'post');
+    return res.token;
+  }
+
+  static async signup(data) {
+    let res = await this.request(`auth/register`, data, 'post');
+    return res.token;
+  }
 }
 
 export default BookAppApi;
