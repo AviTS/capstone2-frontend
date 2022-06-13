@@ -36,7 +36,6 @@ class BookAppApi {
 
   static async getBookList(searchTerm) {
     let res = await this.request(`search/q=${searchTerm}`);
-    console.log(res);
     return res;
   }
 

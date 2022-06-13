@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../common/Alert';
-/** Login form.
- *
- * Shows form and manages update to state on changes.
- * On submission:
- * - calls login function prop
- * - redirects to /companies route
- *
- * Routes -> LoginForm -> Alert
- * Routed as /login
- */
+
+//Login form
 
 function LoginForm({ login }) {
   let navigate = useNavigate();
@@ -30,11 +22,6 @@ function LoginForm({ login }) {
     formErrors
   );
 
-  /** Handle form submit:
-   *
-   * Calls login func prop and, if successful, redirect to /companies.
-   */
-
   async function handleSubmit(evt) {
     evt.preventDefault();
     let result = await login(formData);
@@ -45,7 +32,6 @@ function LoginForm({ login }) {
     }
   }
 
-  /** Update form data field */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData((l) => ({ ...l, [name]: value }));
@@ -86,7 +72,7 @@ function LoginForm({ login }) {
               <Alert type="danger" messages={formErrors} />
             ) : null}
 
-            <button onSubmit={handleSubmit}>Submit</button>
+            <button onSubmit={handleSubmit}>Login</button>
           </form>
         </div>
       </div>

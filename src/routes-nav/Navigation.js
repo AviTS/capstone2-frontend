@@ -27,7 +27,7 @@ function Navigation({ logout }) {
       <ul className="navbar-nav">
         <li className="nav-item">
           <NavLink className="nav-link" to="/login">
-            Login
+            Log In
           </NavLink>
         </li>
         <li className="nav-item">
