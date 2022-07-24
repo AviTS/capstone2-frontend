@@ -14,8 +14,13 @@ function Navigation({ logout }) {
           </NavLink>
         </li>
         <li className="navbar-item">
+          <NavLink className="nav-link" to="/libraries">
+            Your Libraries
+          </NavLink>
+        </li>
+        <li className="navbar-item">
           <Link className="nav-link" to="/" onClick={logout}>
-            Log out {currentUser.username}
+            Log out
           </Link>
         </li>
       </ul>
@@ -42,7 +47,7 @@ function Navigation({ logout }) {
   return (
     <nav className="Navigation navbar">
       <Link className="navbar-a" to="/">
-        Books
+        Home
       </Link>
       {currentUser ? loggedInNav() : loggedOutNav()}
     </nav>

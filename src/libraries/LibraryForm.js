@@ -1,31 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../common/Alert';
+import BookAppApi from '../api';
 
-//Login form
-
-function LoginForm({ login }) {
+function LibraryForm() {
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    library_name: '',
+    library_desc: '',
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    'LoginForm',
-    'login=',
-    typeof login,
-    'formData=',
-    formData,
-    'formErrors',
-    formErrors
-  );
-
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await login(formData);
-    if (result.success) {
+    let result = await BookAppApi.createLibrary(formData);
+    if (result) {
       navigate('/libraries');
     } else {
       setFormErrors(result.errors);
@@ -38,41 +27,36 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div className="LoginForm">
-      <h3 className="mb-3">Log In</h3>
+    <div className="LibraryForm">
+      <h3 className="mb-3">Create New Library</h3>
 
       <div className="card">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Username</label>
+              <label>Name</label>
               <input
-                name="username"
+                name="library_name"
                 className="form-control"
-                value={formData.username}
+                value={formData.library_name}
                 onChange={handleChange}
-                autoComplete="username"
+                autoComplete="library-name"
                 required
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label>Description</label>
               <input
-                type="password"
-                name="password"
+                name="library_desc"
                 className="form-control"
-                value={formData.password}
+                value={formData.library_desc}
                 onChange={handleChange}
-                autoComplete="current-password"
+                autoComplete="library-desc"
                 required
               />
             </div>
 
-            {formErrors.length ? (
-              <Alert type="danger" messages={formErrors} />
-            ) : null}
-
-            <button onSubmit={handleSubmit}>Login</button>
+            <button type="submit">Create New Library</button>
           </form>
         </div>
       </div>
@@ -80,4 +64,4 @@ function LoginForm({ login }) {
   );
 }
 
-export default LoginForm;
+export default LibraryForm;

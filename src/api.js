@@ -39,6 +39,45 @@ class BookAppApi {
     return res;
   }
 
+  static async createLibrary(data) {
+    let res = await this.request(`library/`, data, 'post');
+    return res;
+  }
+
+  static async getLibraries() {
+    let res = await this.request(`library/getLibraries`);
+    return res;
+  }
+
+  //need to test below func
+  static async addBooktoLib(library_id, data) {
+    let res = await this.request(`library/${library_id}/books`, data, 'post');
+    return res;
+  }
+
+  static async getBooksFromLib(library_id) {
+    let res = await this.request(`library/${library_id}`);
+    return res;
+  }
+
+  //need to test below func
+  static async delBookfromLib() {
+    let res = await this.request(`library/`, 'delete');
+    return res;
+  }
+
+  //need to test below func
+  static async updateBookRating() {
+    let res = await this.request(`library/rating`, 'patch');
+    return res;
+  }
+
+  //need to test below func
+  static async updateBookNote() {
+    let res = await this.request(`library/notes`, 'patch');
+    return res;
+  }
+
   //login and signup routes
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);

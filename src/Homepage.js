@@ -4,6 +4,8 @@ import LoginForm from './auth/LoginForm';
 import SignupForm from './auth/SignupForm';
 import UserContext from './auth/UserContext';
 import { Link } from 'react-router-dom';
+import LibraryForm from './libraries/LibraryForm';
+import LibraryList from './libraries/LibraryList';
 
 function Homepage({ login, signup }) {
   const { currentUser } = useContext(UserContext);

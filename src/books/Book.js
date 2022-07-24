@@ -19,6 +19,8 @@ function Book() {
 
   if (!book) return;
 
+  //!!!need to update book_genre + book_description so that if a book doesn't have a genre or description from the Google API, it doesn't crash the page.
+
   return (
     <div>
       {book.book ? (
