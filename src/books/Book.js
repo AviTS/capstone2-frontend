@@ -19,7 +19,10 @@ function Book() {
 
   if (!book) return;
 
-  //!!!need to update book_genre + book_description so that if a book doesn't have a genre or description from the Google API, it doesn't crash the page.
+  //need to fix book cover image...
+  // <div>
+  //   <img src={book.book.cover_img} alt="" />
+  // </div>;
 
   return (
     <div>
@@ -27,8 +30,16 @@ function Book() {
         <div>
           <h2>{book.book.book_title}</h2>
           <h3>{[...book.book.book_author]}</h3>
-          <p>{[...book.book.book_genre]}</p>
-          <p>{book.book.book_description}</p>
+          <p>
+            {book.book.book_genre
+              ? [...book.book.book_genre]
+              : 'Genre not listed.'}
+          </p>
+          <p>
+            {book.book.book_description
+              ? [...book.book.book_description]
+              : 'No description available.'}
+          </p>
         </div>
       ) : (
         <p>Book not found</p>

@@ -20,6 +20,9 @@ function BookDetail() {
 
   if (!book) return;
 
+  // <div>
+  //   <img src={book.book.cover_img} alt=""></img>
+  // </div>;
   return (
     <div className="BookDetail">
       <h2>{book.book.book_title}</h2>
