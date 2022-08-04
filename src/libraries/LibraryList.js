@@ -16,8 +16,6 @@ function LibraryList() {
     getLibraries();
   }, []);
 
-  // console.log(libraries);
-
   let libsList = [];
 
   if (libraries) {
@@ -41,7 +39,9 @@ function LibraryList() {
           <div className="LibList-results">
             <ul>
               {libsList.map((l) => (
-                <li key={l.id}>{l.title}</li>
+                <li key={l.id}>
+                  <Link to={`/library/${l.id}`}> {l.title}</Link>
+                </li>
               ))}
             </ul>
           </div>

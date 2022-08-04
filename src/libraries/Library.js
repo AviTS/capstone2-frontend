@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BookAppApi from '../api';
 import UserContext from '../auth/UserContext';
 import Book from '../books/Book';
@@ -19,22 +19,28 @@ function Library() {
     getBook();
   }, []);
 
-  console.log(books);
-
-  let booksList = [];
+  const booksList = [];
+  let bookAuthors = [];
 
   if (books) {
     for (let i = 0; i < books.length; i++) {
       let bookId = books[i].book_id;
+      let bookTitle = books[i].title;
+      let bookAuthor = books[i].author;
+      let extBookId = books[i].external_book_id;
       let bookObj = {
         id: bookId,
+        title: bookTitle,
+        extBookId: extBookId,
+        author: bookAuthor,
       };
-
       booksList.push(bookObj);
     }
   }
 
   if (!books) return;
+
+  //<p>By: {b.author}</p>
 
   return (
     <div className="LibBookList">
@@ -42,7 +48,9 @@ function Library() {
         <div className="BookList-results">
           <ul>
             {booksList.map((b) => (
-              <li key={b.id}>{b.id}</li>
+              <li key={b.id}>
+                <Link to={`/getbook/${b.extBookId}`}>{b.title}</Link>
+              </li>
             ))}
           </ul>
         </div>

@@ -49,7 +49,6 @@ class BookAppApi {
     return res;
   }
 
-  //need to test below func
   static async addBooktoLib(library_id, data) {
     let res = await this.request(`library/${library_id}/books`, data, 'post');
     return res;
@@ -73,10 +72,10 @@ class BookAppApi {
   }
 
   //need to test below func
-  static async updateBookNote() {
-    let res = await this.request(`library/notes`, 'patch');
-    return res;
-  }
+  // static async updateBookNote() {
+  //   let res = await this.request(`library/notes`, 'patch');
+  //   return res;
+  // }
 
   //login and signup routes
   static async getCurrentUser(username) {
