@@ -26,7 +26,7 @@ function Book() {
   console.log(book);
 
   const bookArr = [];
-  let bookAuthors = [];
+  const bookAuthors = [];
 
   if (book) {
     let str = book.book.author;
