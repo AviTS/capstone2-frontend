@@ -74,7 +74,7 @@ function AddBook({ book_id }) {
           </select>
         </div>
         <div>
-          <button>Add Book</button>
+          <button className="btn btn-sm btn-primary">Add Book</button>
         </div>
       </form>
     </div>

@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 
-const DEV_BASE_URL = 'https://capstone2-bookapp-backend.herokuapp.com';
-
 class BookAppApi {
   static token;
 
