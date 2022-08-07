@@ -29,13 +29,13 @@ function Book() {
   const bookAuthors = [];
 
   if (book) {
-    let str = book.book.author;
-    let newStr = str.replace(/["{}']/g, '');
-    let splitStr = newStr.split(',');
+    let authorStr = book.book.author;
+    let newAuthorStr = authorStr.replace(/["{}']/g, '');
+    let splitAuthorStr = newAuthorStr.split(',');
 
     let bookObj = {
       title: book.book.title,
-      author: splitStr,
+      author: splitAuthorStr,
       genre: book.book.genre,
       desc: book.book.book_description,
       img: book.book.cover_img,
@@ -50,7 +50,7 @@ function Book() {
 
   //need to fix book cover image...
   // <div>
-  //   <img src={book.book.cover_img} alt="" />
+  //   <img src={bookArr[0].img} alt="" />
   // </div>;
 
   return (

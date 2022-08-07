@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import BookAppApi from '../api';
 import UserContext from '../auth/UserContext';
 import Book from '../books/Book';
+import StarRating from './StarRating';
 
 function Library() {
   const { currentUser } = useContext(UserContext);
@@ -50,6 +51,7 @@ function Library() {
             {booksList.map((b) => (
               <li key={b.id}>
                 <Link to={`/getbook/${b.extBookId}`}>{b.title}</Link>
+                <StarRating />
               </li>
             ))}
           </ul>
