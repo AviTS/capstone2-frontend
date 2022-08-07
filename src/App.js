@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import BookAppApi from './api';
 import Homepage from './Homepage';
 import Book from './books/Book';
-import BookDetail from './books/BookDetail';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavRoutes from './routes-nav/NavRoutes';
 import useLocalStorage from './hooks/useLocalStorage';

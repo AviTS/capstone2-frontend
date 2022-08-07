@@ -4,6 +4,7 @@ import BookAppApi from '../api';
 import UserContext from '../auth/UserContext';
 import Book from '../books/Book';
 import Rating from './Rating';
+import './Library.css';
 
 function Library() {
   const { currentUser } = useContext(UserContext);
@@ -29,11 +30,13 @@ function Library() {
       let bookTitle = books[i].title;
       let bookAuthor = books[i].author;
       let extBookId = books[i].external_book_id;
+      let rating = books[i].user_rating;
       let bookObj = {
         id: bookId,
         title: bookTitle,
         extBookId: extBookId,
         author: bookAuthor,
+        rating: rating,
       };
       booksList.push(bookObj);
     }
@@ -51,7 +54,11 @@ function Library() {
             {booksList.map((b) => (
               <li key={b.id}>
                 <Link to={`/getbook/${b.extBookId}`}>{b.title}</Link>
-                <Rating />
+                <Rating
+                  currRating={b.rating}
+                  book_id={b.id}
+                  library_id={library_id}
+                />
               </li>
             ))}
           </ul>

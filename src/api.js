@@ -59,19 +59,18 @@ class BookAppApi {
     return res;
   }
 
-  //need to test below func
+  //need to implement below func
   static async delBookfromLib() {
     let res = await this.request(`library/`, 'delete');
     return res;
   }
 
-  //need to test below func
-  static async updateBookRating() {
-    let res = await this.request(`library/rating`, 'patch');
+  static async updateBookRating(data) {
+    let res = await this.request(`library/rating`, data, 'patch');
     return res;
   }
 
-  //need to test below func
+  //need to implement below func
   // static async updateBookNote() {
   //   let res = await this.request(`library/notes`, 'patch');
   //   return res;

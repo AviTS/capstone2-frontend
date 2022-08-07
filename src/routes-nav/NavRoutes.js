@@ -3,7 +3,6 @@ import { Routes, Route, Redirect } from 'react-router-dom';
 import Homepage from '../Homepage';
 import BookList from '../books/BookList';
 import Book from '../books/Book';
-import BookDetail from '../books/BookDetail';
 import LibraryList from '../libraries/LibraryList';
 import LibraryForm from '../libraries/LibraryForm';
 import Library from '../libraries/Library';
