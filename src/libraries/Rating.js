@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import UserContext from '../auth/UserContext';
 import BookAppApi from '../api';
 
-function StarRating() {
+function Rating() {
   const [rating, setRating] = useState(0);
 
   return (
@@ -25,4 +25,4 @@ function StarRating() {
   );
 }
 
-export default StarRating;
+export default Rating;
