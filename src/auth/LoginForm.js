@@ -72,7 +72,13 @@ function LoginForm({ login }) {
               <Alert type="danger" messages={formErrors} />
             ) : null}
 
-            <button onSubmit={handleSubmit}>Login</button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onSubmit={handleSubmit}
+            >
+              Login
+            </button>
           </form>
         </div>
       </div>

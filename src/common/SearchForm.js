@@ -16,14 +16,16 @@ function SearchForm({ searchFor }) {
 
   return (
     <div className="SearchForm">
-      <form onSubmit={handleSubmit}>
+      <form className="form-inline" onSubmit={handleSubmit}>
         <input
           name="searchTerm"
           placeholder="Enter search term here"
           value={searchTerm}
           onChange={handleChange}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn btn-sm btn-primary">
+          Search
+        </button>
       </form>
     </div>
   );

@@ -12,7 +12,6 @@ function Homepage({ login, signup }) {
 
   return (
     <div className="Homepage">
-      <h1>Homepage</h1>
       <div className="container text-center">
         {currentUser ? (
           <h2>Welcome Back, {currentUser.username}!</h2>
@@ -28,10 +27,10 @@ function Homepage({ login, signup }) {
         )}
       </div>
       <div>
-        <SignupForm signup={signup} />
+        <LoginForm login={login} />
       </div>
       <div>
-        <LoginForm login={login} />
+        <SignupForm signup={signup} />
       </div>
     </div>
   );

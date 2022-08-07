@@ -56,7 +56,9 @@ function LibraryForm() {
               />
             </div>
 
-            <button type="submit">Create New Library</button>
+            <button type="submit" className="btn btn-primary">
+              Create New Library
+            </button>
           </form>
         </div>
       </div>
