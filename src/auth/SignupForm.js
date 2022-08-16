@@ -51,6 +51,8 @@ function SignupForm({ signup }) {
                   className="form-control"
                   value={formData.username}
                   onChange={handleChange}
+                  minLength={5}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -61,6 +63,8 @@ function SignupForm({ signup }) {
                   className="form-control"
                   value={formData.password}
                   onChange={handleChange}
+                  minLength={5}
+                  required
                 />
               </div>
 

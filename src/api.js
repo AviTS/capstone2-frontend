@@ -20,15 +20,15 @@ class BookAppApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      console.error('API Error:', err.response);
-      let message = err.response.data.error.message;
+      // console.error('API Error:', err.response);
+      let message = err.response.data.message;
       throw Array.isArray(message) ? message : [message];
     }
   }
 
   static async getBook(volId) {
     let res = await this.request(volId);
-    console.log(res);
+    // console.log(res);
     return res;
   }
 

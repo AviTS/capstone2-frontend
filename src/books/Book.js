@@ -23,7 +23,7 @@ function Book() {
     [volId]
   );
 
-  console.log(book);
+  // console.log(book);
 
   const bookArr = [];
   const bookAuthors = [];
