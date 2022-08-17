@@ -10,6 +10,16 @@ I used Node.js and Express.js for the backend portion of the project. To ensure 
 
 I utilized the Google Books API (https://developers.google.com/books) for all the book data I needed. This included all the basic book information, such as title, author(s), genre(s), book description, among other things. After the initial Google Books API call, I took the specific information I needed for the app and added it to the PostgreSQL database.
 
-For the frontend, I utilized React.js, and for CSS, I used React Bootstrap. 
+For the frontend, I utilized React.js, and for CSS, I used React Bootstrap. I created a single file to 'gather' all the data from any backend API calls. Although not necessary, it significantly helped in me organizing my code in that it kept all the frontend and backend stuff separate from each other and in a single file.
 
-For the database, I used PostgreSQL. 
+For the database, I used PostgreSQL (in SQL).
+
+For deployment, I used GitHub and Heroku.
+
+Tech Stack Summary:
+1. Backend: Node.js + Express.js
+2. Frontend: React.js + React Bootstrap (CSS)
+3. Database: PostgreSQL 
+4. Deployment: Github + Heroku
+5. Testing: Jest
+6. Misc: dotenv, jwt, bcrypt, axios, React Router, and jsonschema.
