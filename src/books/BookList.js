@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import BookAppApi from '../api';
-import Book from './Book';
 import SearchForm from '../common/SearchForm';
 import { Link } from 'react-router-dom';
 import './BookList.css';
@@ -37,22 +36,23 @@ function BookList() {
 
   return (
     <div className="BookList">
-      <SearchForm searchFor={search} />
-
-      {books ? (
-        <div className="BookList-results">
-          <ul>
-            {bookInfo.map((b) => (
-              <li key={b.id}>
-                {b.title}
-                <Link to={`/getbook/${b.id}`}>View book details</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>No results</p>
-      )}
+      <div>
+        <SearchForm searchFor={search} />
+      </div>
+      <div>
+        {bookInfo.length ? (
+          <div className="BookList-results">
+            <ul>
+              {bookInfo.map((b) => (
+                <li key={b.id}>
+                  {b.title}
+                  <Link to={`/getbook/${b.id}`}>View book details</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

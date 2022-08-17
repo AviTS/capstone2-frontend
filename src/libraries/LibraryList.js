@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BookAppApi from '../api';
 import UserContext from '../auth/UserContext';
-import Library from './Library';
-import LibraryForm from './LibraryForm';
 import './LibraryList.css';
 
 function LibraryList() {
@@ -36,7 +34,7 @@ function LibraryList() {
   return (
     <div>
       <div className="LibsList">
-        {libraries ? (
+        {libsList.length ? (
           <div className="LibList-results">
             <ul>
               {libsList.map((l) => (

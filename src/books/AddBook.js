@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../auth/UserContext';
 import BookAppApi from '../api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function AddBook({ book_id }) {
   const [libraries, setLibraries] = useState(null);
@@ -50,7 +50,7 @@ function AddBook({ book_id }) {
           user_id: currentUser.user_id,
           book_id: book_id,
         });
-        navigate(`/library/${libId}`); //temporary redirect}
+        navigate(`/library/${libId}`);
       } catch (error) {
         console.log(error);
         return;
@@ -58,25 +58,32 @@ function AddBook({ book_id }) {
     }
   }
 
-  // useState for a success message once user successfully adds
-  // book to library...
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <select id="id" name="id">
-            {libsList.map((l) => (
-              <option key={l.id} value={l.id}>
-                {l.title}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <button className="btn btn-sm btn-primary">Add Book</button>
-        </div>
-      </form>
+      <div>
+        {libsList.length ? (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <select id="id" name="id">
+                {libsList.map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <button className="btn btn-sm btn-primary">Add Book</button>
+            </div>
+          </form>
+        ) : (
+          <div>
+            <Link to={`/newlibrary`}>
+              Click here to start adding books to a library!
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

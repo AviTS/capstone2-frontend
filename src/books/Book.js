@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import UserContext from '../auth/UserContext';
 import BookAppApi from '../api';
 import AddBook from './AddBook';
+import './Book.css';
 
 function Book() {
   const { volId } = useParams();
 
-  const { currentUser } = useContext(UserContext);
-
   const [book, setBook] = useState(null);
-
-  // const { hasAddedBookToLib, addBookToLib } = useState(null);
 
   useEffect(
     function getBookDetails() {
@@ -23,8 +19,6 @@ function Book() {
     [volId]
   );
 
-  // console.log(book);
-
   const bookArr = [];
   const bookAuthors = [];
 
@@ -33,11 +27,19 @@ function Book() {
     let newAuthorStr = authorStr.replace(/["{}']/g, '');
     let splitAuthorStr = newAuthorStr.split(',');
 
+    let genreStr = book.book.genre;
+    let newGenreStr = genreStr.replace(/["{}']/g, '');
+    let splitGenreStr = newGenreStr.split(',');
+
+    let descStr = book.book.book_description;
+    let newDescStr = descStr.replace(/<[^>]+>/g, '');
+
     let bookObj = {
       title: book.book.title,
       author: splitAuthorStr,
-      genre: book.book.genre,
-      desc: book.book.book_description,
+      genre: splitGenreStr,
+      desc: newDescStr,
+
       img: book.book.cover_img,
       id: book.book.book_id,
       extId: book.book.external_book_id,
@@ -48,14 +50,9 @@ function Book() {
 
   if (!book) return;
 
-  //need to fix book cover image...
-  // <div>
-  //   <img src={bookArr[0].img} alt="" />
-  // </div>;
-
   return (
     <div>
-      {bookArr ? (
+      {bookArr.length ? (
         <div>
           <h2>{bookArr[0].title}</h2>
           <div>

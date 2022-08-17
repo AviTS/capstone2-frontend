@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BookAppApi from '../api';
-import UserContext from '../auth/UserContext';
-import Book from '../books/Book';
 import Rating from './Rating';
 import './Library.css';
 
 function Library() {
-  const { currentUser } = useContext(UserContext);
-
   const [books, setBooks] = useState(null);
 
   const { library_id } = useParams();
@@ -22,7 +18,6 @@ function Library() {
   }, []);
 
   const booksList = [];
-  let bookAuthors = [];
 
   if (books) {
     for (let i = 0; i < books.length; i++) {
@@ -48,7 +43,7 @@ function Library() {
 
   return (
     <div className="LibBookList">
-      {books ? (
+      {booksList.length ? (
         <div className="BookList-results">
           <ul>
             {booksList.map((b) => (
@@ -64,7 +59,10 @@ function Library() {
           </ul>
         </div>
       ) : (
-        <p>No results</p>
+        <p>
+          You either haven't added any books to your library yet or you're in
+          someone else's library!
+        </p>
       )}
     </div>
   );

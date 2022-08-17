@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import UserContext from '../auth/UserContext';
 import BookAppApi from '../api';
-import { useNavigate } from 'react-router-dom';
-
 import './Rating.css';
 
 function Rating({ currRating, book_id, library_id }) {

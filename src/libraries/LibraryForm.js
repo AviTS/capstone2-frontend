@@ -55,7 +55,9 @@ function LibraryForm() {
                 required
               />
             </div>
-
+            {formErrors.length ? (
+              <Alert type="danger" messages={formErrors} />
+            ) : null}
             <button type="submit" className="btn btn-primary">
               Create New Library
             </button>

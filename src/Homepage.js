@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import LoginForm from './auth/LoginForm';
 import SignupForm from './auth/SignupForm';
 import UserContext from './auth/UserContext';
-import { Link } from 'react-router-dom';
+import './Homepage.css';
 
 function Homepage({ login, signup }) {
   const { currentUser } = useContext(UserContext);
@@ -11,7 +11,17 @@ function Homepage({ login, signup }) {
     <div className="Homepage">
       <div className="container text-center">
         {currentUser ? (
-          <h2>Welcome Back, {currentUser.username}!</h2>
+          <div>
+            <h2>Welcome Back, {currentUser.username}!</h2>
+            <p>
+              Welcome to my Final Capstone Project! Please begin by signing up
+              with a username and password. Once you’ve signed up, head over to
+              the ‘Search’ or ‘Your Libraries’ section. You can start searching
+              for books, however, you’ll need to create your own library before
+              you attempt to add a book. Once a book has been added to a
+              library, you can rate it by clicking on the corresponding star.
+            </p>
+          </div>
         ) : (
           <div>
             {currentUser ? null : <LoginForm login={login} />}
