@@ -10,7 +10,9 @@ function LibraryList() {
 
   useEffect(function getLibraryList() {
     async function getLibraries() {
-      setLibraries(await BookAppApi.getLibraries(currentUser.user_id));
+      if (currentUser !== null) {
+        setLibraries(await BookAppApi.getLibraries(currentUser.user_id));
+      }
     }
     getLibraries();
   }, []);
@@ -29,6 +31,14 @@ function LibraryList() {
       };
       libsList.push(libObj);
     }
+  }
+
+  if (!currentUser) {
+    return (
+      <div>
+        <h4>Please login or create an account.</h4>
+      </div>
+    );
   }
 
   return (
