@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import BookAppApi from '../api';
 import SearchForm from '../common/SearchForm';
 import { Link } from 'react-router-dom';
+import UserContext from '../auth/UserContext';
 import './BookList.css';
 
 function BookList() {
   const [books, setBooks] = useState(null);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(function getBooks() {
     search();
@@ -32,6 +34,14 @@ function BookList() {
 
       bookInfo.push(bookObj);
     }
+  }
+
+  if (!currentUser) {
+    return (
+      <div>
+        <h4>Please login or create an account.</h4>
+      </div>
+    );
   }
 
   return (
