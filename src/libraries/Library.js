@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import BookAppApi from '../api';
 import Rating from './Rating';
+import UserContext from '../auth/UserContext';
 import './Library.css';
 
 function Library() {
   const [books, setBooks] = useState(null);
+  const { currentUser } = useContext(UserContext);
 
   const { library_id } = useParams();
 
   useEffect(function getBooks() {
-    async function getBook() {
-      let books = await BookAppApi.getBooksFromLib(library_id);
-      setBooks(books);
+    if (currentUser !== null) {
+      async function getBook() {
+        let books = await BookAppApi.getBooksFromLib(library_id);
+        setBooks(books);
+      }
+      getBook();
     }
-    getBook();
   }, []);
 
   const booksList = [];
@@ -37,9 +41,15 @@ function Library() {
     }
   }
 
-  if (!books) return;
+  if (!currentUser) {
+    return (
+      <div>
+        <h4>Please login or create an account.</h4>
+      </div>
+    );
+  }
 
-  //<p>By: {b.author}</p>
+  if (!books) return;
 
   return (
     <div className="LibBookList">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Alert from '../common/Alert';
+// import Alert from '../common/Alert';
 
 //signup form
 
@@ -10,17 +10,17 @@ function SignupForm({ signup }) {
     username: '',
     password: '',
   });
-  const [formErrors, setFormErrors] = useState([]);
+  // const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    'SignupForm',
-    'signup=',
-    typeof signup,
-    'formData=',
-    formData,
-    'formErrors=',
-    formErrors
-  );
+  // console.debug(
+  //   'SignupForm',
+  //   'signup=',
+  //   typeof signup,
+  //   'formData=',
+  //   formData,
+  //   'formErrors=',
+  //   formErrors
+  // );
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -28,7 +28,7 @@ function SignupForm({ signup }) {
     if (result.success) {
       navigate('/getbooklist');
     } else {
-      setFormErrors(result.errors);
+      return;
     }
   }
 
@@ -67,10 +67,6 @@ function SignupForm({ signup }) {
                   required
                 />
               </div>
-
-              {formErrors.length ? (
-                <Alert type="danger" messages={formErrors} />
-              ) : null}
 
               <button
                 type="submit"

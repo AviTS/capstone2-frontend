@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Alert from '../common/Alert';
+// import Alert from '../common/Alert';
 
 //Login form
 
@@ -10,25 +10,25 @@ function LoginForm({ login }) {
     username: '',
     password: '',
   });
-  const [formErrors, setFormErrors] = useState([]);
+  // const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    'LoginForm',
-    'login=',
-    typeof login,
-    'formData=',
-    formData,
-    'formErrors',
-    formErrors
-  );
+  // console.debug(
+  //   'LoginForm',
+  //   'login=',
+  //   typeof login,
+  //   'formData=',
+  //   formData,
+  //   'formErrors',
+  //   formErrors
+  // );
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      navigate('/libraries');
+      navigate('/');
     } else {
-      setFormErrors(result.errors);
+      return;
     }
   }
 
@@ -67,10 +67,6 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
-
-              {formErrors.length ? (
-                <Alert type="danger" messages={formErrors} />
-              ) : null}
 
               <button
                 type="submit"
