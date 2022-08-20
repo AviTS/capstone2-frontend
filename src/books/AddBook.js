@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../auth/UserContext';
 import BookAppApi from '../api';
 import { Link, useNavigate } from 'react-router-dom';
+import Alert from '../common/Alert';
 
 function AddBook({ book_id }) {
   const [libraries, setLibraries] = useState(null);
@@ -10,6 +11,7 @@ function AddBook({ book_id }) {
     id: '',
     title: '',
   });
+  const [duplicateBookErr, setDuplicateBookErr] = useState(false);
   let navigate = useNavigate();
 
   useEffect(function getLibraryList() {
@@ -52,7 +54,9 @@ function AddBook({ book_id }) {
         });
         navigate(`/library/${libId}`);
       } catch (error) {
-        console.log(error);
+        if (error[0].status === 600) {
+          setDuplicateBookErr(true);
+        }
         return;
       }
     }
@@ -83,6 +87,11 @@ function AddBook({ book_id }) {
             </Link>
           </div>
         )}
+      </div>
+      <div>
+        {duplicateBookErr === true ? (
+          <Alert type="danger" messages={['Book already in library']} />
+        ) : null}
       </div>
     </div>
   );

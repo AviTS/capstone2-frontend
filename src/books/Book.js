@@ -23,16 +23,26 @@ function Book() {
   const bookAuthors = [];
 
   if (book) {
-    let authorStr = book.book.author;
-    let newAuthorStr = authorStr.replace(/["{}']/g, '');
-    let splitAuthorStr = newAuthorStr.split(',');
+    let splitAuthorStr = '';
+    let splitGenreStr = '';
+    let newDescStr = '';
 
-    let genreStr = book.book.genre;
-    let newGenreStr = genreStr.replace(/["{}']/g, '');
-    let splitGenreStr = newGenreStr.split(',');
+    if (book.book.author !== null) {
+      let authorStr = book.book.author;
+      let newAuthorStr = authorStr.replace(/["{}']/g, '');
+      splitAuthorStr = newAuthorStr.split(',');
+    }
 
-    let descStr = book.book.book_description;
-    let newDescStr = descStr.replace(/<[^>]+>/g, '');
+    if (book.book.genre !== null) {
+      let genreStr = book.book.genre;
+      let newGenreStr = genreStr.replace(/["{}']/g, '');
+      splitGenreStr = newGenreStr.split(',');
+    }
+
+    if (book.book.book_description !== null) {
+      let descStr = book.book.book_description;
+      newDescStr = descStr.replace(/<[^>]+>/g, '');
+    }
 
     let bookObj = {
       title: book.book.title,

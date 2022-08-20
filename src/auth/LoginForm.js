@@ -40,7 +40,7 @@ function LoginForm({ login }) {
   return (
     <div className="LoginForm">
       <div className="container">
-        <h3 className="mb-3">Log In</h3>
+        <h2 className="mb-3">Log In</h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>

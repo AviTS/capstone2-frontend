@@ -37,7 +37,7 @@ function Rating({ currRating, book_id, library_id }) {
         });
         setRating(+bookRating);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         return;
       }
     }

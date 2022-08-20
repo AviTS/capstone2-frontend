@@ -41,6 +41,8 @@ function LibraryList() {
     );
   }
 
+  if (!libraries) return;
+
   return (
     <div>
       <div className="LibsList">

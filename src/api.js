@@ -6,8 +6,6 @@ class BookAppApi {
   static token;
 
   static async request(endpoint, data = {}, method = 'get') {
-    console.debug('API Call:', endpoint, data, method);
-
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${BookAppApi.token}` };
     let params;
@@ -20,20 +18,21 @@ class BookAppApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      // console.error('API Error:', err.response);
-      let message = err.response.data.message;
+      let message = {
+        status: err.response.status,
+        message: err.response.data.message,
+      };
       throw Array.isArray(message) ? message : [message];
     }
   }
 
   static async getBook(volId) {
     let res = await this.request(volId);
-    // console.log(res);
     return res;
   }
 
-  static async getBookList(searchTerm) {
-    let res = await this.request(`search/q=${searchTerm}`);
+  static async getBookList(searchTerm, page) {
+    let res = await this.request(`search/q=${searchTerm}&page=${page}`);
     return res;
   }
 
