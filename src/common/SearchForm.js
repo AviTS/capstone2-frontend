@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PageContext from '../PageContext';
 
 function SearchForm({ searchFor }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [uiSearchTerm, setUISearchTerm] = useState('');
+
+  const { searchStr, page, setSearchStr } = useContext(PageContext);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-
-    searchFor(searchTerm.trim() || undefined);
-    setSearchTerm(searchTerm.trim());
+    setSearchStr(uiSearchTerm.trim());
   }
 
   function handleChange(evt) {
-    setSearchTerm(evt.target.value);
+    setUISearchTerm(evt.target.value);
   }
 
   return (
@@ -20,7 +21,7 @@ function SearchForm({ searchFor }) {
         <input
           name="searchTerm"
           placeholder="Enter search term here"
-          value={searchTerm}
+          value={uiSearchTerm}
           onChange={handleChange}
         />
         <button type="submit" className="btn btn-sm btn-primary">
