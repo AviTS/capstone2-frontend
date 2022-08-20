@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Capstone 2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Book App: https://cap2bookapp.herokuapp.com/
 
-## Available Scripts
+I was inspired by Goodreads to create this web app. Broadly speaking, my project allows for a user to add books they're interested in to their personal libraries.
 
-In the project directory, you can run:
+After signing up or logging in, the user will be able to search for books (using a third-party API) and create a library. Once the user finds a book they want to add to one of their libraries and have create a library, they will then be able to rate the book (between one and five stars). 
 
-### `npm start`
+I used Node.js and Express.js for the backend portion of the project. To ensure secure storage of user login data, I used the npm packages bcrypt and jsonwebtoken (jwt). Bcrypt and JWT allowed for password hashing in addition to token authorization. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I utilized the Google Books API (https://developers.google.com/books) for all the book data I needed. This included all the basic book information, such as title, author(s), genre(s), book description, among other things. After the initial Google Books API call, I took the specific information I needed for the app and added it to the PostgreSQL database.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+For the frontend, I utilized React.js, and for CSS, I used React Bootstrap. I created a single file to 'gather' all the data from any backend API calls. Although not necessary, it significantly helped in me organizing my code in that it kept all the frontend and backend stuff separate from each other and in a single file.
 
-### `npm test`
+For the database, I used PostgreSQL (in SQL).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For deployment, I used GitHub and Heroku.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Tech Stack Summary:
+1. Backend: Node.js + Express.js
+2. Frontend: React.js + React Bootstrap (CSS)
+3. Database: PostgreSQL 
+4. Deployment: Github + Heroku
+5. Testing: Jest
+6. Misc: dotenv, jwt, bcrypt, axios, React Router, and jsonschema.
