@@ -9,15 +9,22 @@ function LibraryForm() {
     library_name: '',
     library_desc: '',
   });
-  const [formErrors, setFormErrors] = useState([]);
+  const [duplicateLibErr, setDuplicateLibErr] = useState(false);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await BookAppApi.createLibrary(formData);
-    if (result) {
-      navigate('/libraries');
-    } else {
-      setFormErrors(result.errors);
+
+    if (formData) {
+      try {
+        handleChange(evt);
+        await BookAppApi.createLibrary(formData);
+        navigate(`/libraries/`);
+      } catch (error) {
+        if (error[0].status === 400) {
+          setDuplicateLibErr(true);
+        }
+        return;
+      }
     }
   }
 
@@ -55,8 +62,8 @@ function LibraryForm() {
                 required
               />
             </div>
-            {formErrors.length ? (
-              <Alert type="danger" messages={formErrors} />
+            {duplicateLibErr === true ? (
+              <Alert type="danger" messages={['Library already exists!']} />
             ) : null}
             <button type="submit" className="btn btn-primary">
               Create New Library
