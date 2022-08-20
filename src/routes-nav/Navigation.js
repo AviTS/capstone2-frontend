@@ -30,7 +30,7 @@ function Navigation({ logout }) {
   function loggedOutNav() {
     return (
       <Navbar>
-        <Container>
+        <Container fluid="false">
           <Nav>
             <Nav.Link href="/">Log In</Nav.Link>
             <Nav.Link href="/">Sign up</Nav.Link>
