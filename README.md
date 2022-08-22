@@ -23,3 +23,6 @@ Tech Stack Summary:
 4. Deployment: Github + Heroku
 5. Testing: Jest
 6. Misc: dotenv, jwt, bcrypt, axios, React Router, and jsonschema.
+
+
+To setup the application locally, create a PostgreSQL database named `booksdb`, by running the terminal command `psql -d booksdb -f db-schema.sql`. Once the database is set up and the repository is cloned, run `npm i` in the terminal for both the frontend and backend repositories. Then run `npm start` in the terminal for both the frontend and backend repositories. To run the backend tests, just type in `jest` and hit enter.
