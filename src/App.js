@@ -44,7 +44,7 @@ function App() {
       return { success: true };
     } catch (errors) {
       console.error('signup failed', errors);
-      return { success: false, errors };
+      throw { success: false, errors };
     }
   }
 
@@ -60,7 +60,7 @@ function App() {
       return { success: true };
     } catch (errors) {
       console.error('login failed', errors);
-      return { success: false, errors };
+      throw { success: false, errors };
     }
   }
 

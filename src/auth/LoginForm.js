@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Alert from '../common/Alert';
+import Alert from '../common/Alert';
 
 //Login form
 
@@ -10,25 +10,24 @@ function LoginForm({ login }) {
     username: '',
     password: '',
   });
-  // const [formErrors, setFormErrors] = useState([]);
-
-  // console.debug(
-  //   'LoginForm',
-  //   'login=',
-  //   typeof login,
-  //   'formData=',
-  //   formData,
-  //   'formErrors',
-  //   formErrors
-  // );
+  const [badLoginInfo, setBadLoginInfo] = useState(false);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await login(formData);
-    if (result.success) {
-      navigate('/');
-    } else {
-      return;
+
+    if (formData) {
+      try {
+        handleChange(evt);
+        let result = await login(formData);
+        if (result.success) {
+          navigate('/');
+        }
+      } catch (error) {
+        if (error.errors[0].status === 602) {
+          setBadLoginInfo(true);
+        }
+        return;
+      }
     }
   }
 
@@ -75,6 +74,14 @@ function LoginForm({ login }) {
               >
                 Login
               </button>
+              <div>
+                {badLoginInfo === true ? (
+                  <Alert
+                    type="danger"
+                    messages={['Incorrect username or password.']}
+                  />
+                ) : null}
+              </div>
             </form>
           </div>
         </div>

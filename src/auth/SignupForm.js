@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Alert from '../common/Alert';
+import Alert from '../common/Alert';
 
 //signup form
 
@@ -10,25 +10,24 @@ function SignupForm({ signup }) {
     username: '',
     password: '',
   });
-  // const [formErrors, setFormErrors] = useState([]);
-
-  // console.debug(
-  //   'SignupForm',
-  //   'signup=',
-  //   typeof signup,
-  //   'formData=',
-  //   formData,
-  //   'formErrors=',
-  //   formErrors
-  // );
+  const [duplicateUserErr, setDuplicateUserErr] = useState(false);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await signup(formData);
-    if (result.success) {
-      navigate('/getbooklist');
-    } else {
-      return;
+
+    if (formData) {
+      try {
+        handleChange(evt);
+        let result = await signup(formData);
+        if (result.success) {
+          navigate('/getbooklist');
+        }
+      } catch (error) {
+        if (error.errors[0].status === 601) {
+          setDuplicateUserErr(true);
+        }
+        return;
+      }
     }
   }
 
@@ -52,6 +51,7 @@ function SignupForm({ signup }) {
                   value={formData.username}
                   onChange={handleChange}
                   minLength={5}
+                  maxLength={30}
                   required
                 />
               </div>
@@ -64,6 +64,7 @@ function SignupForm({ signup }) {
                   value={formData.password}
                   onChange={handleChange}
                   minLength={5}
+                  maxLength={20}
                   required
                 />
               </div>
@@ -75,6 +76,14 @@ function SignupForm({ signup }) {
               >
                 Sign up
               </button>
+              <div>
+                {duplicateUserErr === true ? (
+                  <Alert
+                    type="danger"
+                    messages={['Please choose a different username.']}
+                  />
+                ) : null}
+              </div>
             </form>
           </div>
         </div>
