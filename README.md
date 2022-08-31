@@ -1,6 +1,6 @@
 # Capstone 2
 
-Book App: https://cap2bookapp.herokuapp.com/
+Book App: https://happyreading.herokuapp.com/
 
 I was inspired by Goodreads to create this web app. Broadly speaking, my project allows for a user to add books they're interested in to their personal libraries.
 
