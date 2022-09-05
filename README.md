@@ -1,6 +1,6 @@
-# Capstone 2
+# HappyReading
 
-Book App: https://happyreading.herokuapp.com/
+Link: https://happyreading.herokuapp.com/
 
 I was inspired by Goodreads to create this web app. Broadly speaking, my project allows for a user to add books they're interested in to their personal libraries.
 
